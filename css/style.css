@@ -77,7 +77,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { display: block; max-width: 100%; height: auto; }
+img, video { display: block; max-width: 100%; height: auto; }
 
 h1, h2, h3 {
   margin: 0;
