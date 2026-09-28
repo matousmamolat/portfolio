@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects — Matouš Mamolat</title>
-  <meta name="description" content="Selected projects by Matouš Mamolat — web apps, dashboards, databases and information work.">
+  <title>Projects | Matouš Mamolat</title>
+  <meta name="description" content="Selected projects by Matouš Mamolat: a game in progress, web apps, a database and generative art.">
   <meta name="author" content="Matouš Mamolat">
   <meta name="theme-color" content="#0d0d0d">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -37,62 +37,95 @@
         <h1>Selected work</h1>
         <p class="tagline">From raw information to things people use.</p>
       </header>
-
-      <article class="project" id="fivefold" aria-labelledby="fivefold-title">
-        <figure data-silk="3"><img src="img/silk/silk-03.jpg" width="900" height="600" alt="Generative cover artwork for Fivefold" loading="lazy"></figure>
+      <article class="project" id="game" aria-labelledby="game-title">
+        <figure class="has-shot" tabindex="0" data-silk="37">
+          <img src="img/silk/silk-37.jpg" width="900" height="600" alt="Generative cover artwork for SpellBattle" loading="lazy">
+          <img class="reveal" src="img/shots/spellbattle.jpg" width="1200" height="800" alt="Screenshots of SpellBattle: a duel on the tile board and the hero spell list" loading="lazy">
+          <span class="shot-hint" aria-hidden="true"></span>
+        </figure>
         <div>
           <span class="num">01</span>
+          <h2 id="game-title">SpellBattle</h2>
+          <ul class="meta"><li>Work in progress</li><li>Mobile game</li><li>Unity 6 · C#</li></ul>
+          <p>A real-time 1v1 mobile duel I'm building solo in Unity 6 and C#. It starts from the core idea of Super Spell Heroes and builds its own systems and design on top of it. Two players draw paths across a board of elemental tiles, and every tile they match fuels the spells they throw at each other.</p>
+          <p>Three heroes are playable, each with a full set of attacks, shields and support spells. Heroes feel distinct even when they share an element, every spell hits a single target so fights stay tense and readable, and some shields hold hit after hit while others break on first use, so deciding when to block and when to attack really matters.</p>
+          <p>The biggest lesson so far: design systems that can grow. Stats and spell data are structured so that character progression can be added later without rewriting what already works.</p>
+        </div>
+      </article>
+      <article class="project" id="fivefold" aria-labelledby="fivefold-title">
+        <figure class="has-shot" tabindex="0" data-silk="3">
+          <img src="img/silk/silk-03.jpg" width="900" height="600" alt="Generative cover artwork for Fivefold" loading="lazy">
+          <img class="reveal" src="img/shots/fivefold.jpg" width="1200" height="800" alt="Screenshot of the Fivefold app: the Today screen with daily progress rings" loading="lazy">
+          <span class="shot-hint" aria-hidden="true"></span>
+        </figure>
+        <div>
+          <span class="num">02</span>
           <h2 id="fivefold-title">Fivefold</h2>
           <ul class="meta"><li>2026</li><li>Personal web app</li><li>React · PWA · Gemini API</li></ul>
-          <p>A private progressive web app that plans my week around five pillars — health, creativity, mindfulness, socialising and growth. It builds a time-of-day schedule, generates workouts and meal ideas with AI, and keeps a strict daily streak. Built for exactly one user: me.</p>
+          <p>A private progressive web app that plans my week around five pillars: health, creativity, mindfulness, socialising and growth. It builds a time-of-day schedule, generates workouts and meal ideas with AI, and keeps a strict daily streak. Built for exactly one user: me.</p>
+          <p class="project__links"><a class="arrow" href="https://matousmamolat.github.io/fivefold/">Live app</a></p>
         </div>
       </article>
       <article class="project" id="dashboard" aria-labelledby="dashboard-title">
-        <figure data-silk="12"><img src="img/silk/silk-12.jpg" width="900" height="600" alt="Generative cover artwork for School dashboard" loading="lazy"></figure>
+        <figure class="has-shot" tabindex="0" data-silk="12">
+          <img src="img/silk/silk-12.jpg" width="900" height="600" alt="Generative cover artwork for School dashboard" loading="lazy">
+          <img class="reveal" src="img/shots/dashboard.jpg" width="1200" height="800" alt="Screenshot of the school dashboard: today's timetable and next class" loading="lazy">
+          <span class="shot-hint" aria-hidden="true"></span>
+        </figure>
         <div>
-          <span class="num">02</span>
+          <span class="num">03</span>
           <h2 id="dashboard-title">School dashboard</h2>
           <ul class="meta"><li>2026</li><li>Web</li><li>HTML · CSS · JSON</li></ul>
-          <p>A phone-first overview of my semester — today's classes, deadlines, courses and timetable — all driven by a single JSON file and hosted on GitHub Pages. Built after one too many forgotten deadlines.</p>
+          <p>A phone-first overview of my semester with today's classes, deadlines, courses and timetable, all driven by a single JSON file and hosted on GitHub Pages. Built after one too many forgotten deadlines.</p>
+          <p class="project__links"><a class="arrow" href="https://matousmamolat.github.io/schooldashboard/">Live app</a> <a class="arrow" href="https://github.com/matousmamolat/schooldashboard">Source code</a></p>
         </div>
       </article>
       <article class="project" id="database" aria-labelledby="database-title">
-        <figure data-silk="20"><img src="img/silk/silk-20.jpg" width="900" height="600" alt="Generative cover artwork for Veterinary clinic database" loading="lazy"></figure>
+        <figure class="has-shot" tabindex="0" data-silk="20">
+          <img src="img/silk/silk-20.jpg" width="900" height="600" alt="Generative cover artwork for Veterinary clinic database" loading="lazy">
+          <img class="reveal" src="img/shots/database.jpg" width="1200" height="800" alt="Database design in three steps: hand sketch, conceptual model and physical model" loading="lazy">
+          <span class="shot-hint" aria-hidden="true"></span>
+        </figure>
         <div>
-          <span class="num">03</span>
+          <span class="num">04</span>
           <h2 id="database-title">Veterinary clinic database</h2>
           <ul class="meta"><li>2026</li><li>Databases 4IT218</li><li>Oracle · SQL</li></ul>
           <p>Conceptual, logical and physical models of a veterinary clinic, implemented in Oracle with DDL scripts and full documentation. A lesson in naming things well and in how much a good model simplifies everything after it.</p>
         </div>
       </article>
-      <article class="project" id="wikidata" aria-labelledby="wikidata-title">
-        <figure data-silk="37"><img src="img/silk/silk-37.jpg" width="900" height="600" alt="Generative cover artwork for Wikidata authority linking" loading="lazy"></figure>
+      <article class="project" id="portfolio" aria-labelledby="portfolio-title">
+        <figure class="has-shot" tabindex="0" data-silk="35">
+          <img src="img/silk/silk-35.jpg" width="900" height="600" alt="Generative cover artwork for This website" loading="lazy">
+          <img class="reveal" src="img/shots/portfolio.jpg" width="1200" height="800" alt="Screenshot of this website's home page" loading="lazy">
+          <span class="shot-hint" aria-hidden="true"></span>
+        </figure>
         <div>
-          <span class="num">04</span>
-          <h2 id="wikidata-title">Wikidata authority linking</h2>
-          <ul class="meta"><li>2026</li><li>Digital libraries 4IZ162</li><li>Wikidata · Bibliometrics</li></ul>
-          <p>Linked authority records from the National Library of the Czech Republic to Wikidata and ran a bibliometric analysis of three FIS VŠE authors. Small edits that make information findable for everyone.</p>
+          <span class="num">05</span>
+          <h2 id="portfolio-title">This website</h2>
+          <ul class="meta"><li>2026</li><li>Web technologies 4IZ268</li><li>HTML · CSS</li></ul>
+          <p>Hand-written HTML and CSS with no framework and no template. The site works even with JavaScript turned off. Built for the Web Technologies course and kept as my portfolio.</p>
+          <p class="project__links"><a class="arrow" href="https://matousmamolat.github.io/portfolio/">Live site</a> <a class="arrow" href="https://github.com/matousmamolat/portfolio">Source code</a></p>
         </div>
       </article>
       <article class="project" id="generative" aria-labelledby="generative-title">
         <figure data-silk="9"><img src="img/silk/silk-09.jpg" width="900" height="600" alt="Generative cover artwork for Generative studies" loading="lazy"></figure>
         <div>
-          <span class="num">05</span>
+          <span class="num">06</span>
           <h2 id="generative-title">Generative studies</h2>
           <ul class="meta"><li>2026</li><li>Personal</li><li>JavaScript · Canvas API</li></ul>
-          <p>Every grey wave on this site is drawn live in your browser by my own JavaScript — no photos, no videos. Each pixel's brightness comes from a sine wave nested inside another sine wave; random parameters give every visit a different image. Adding time to the formula makes it flow, and every few seconds each wave slowly morphs into a brand-new shape.</p>
+          <p>Every grey wave on this site is drawn live in your browser by my own JavaScript. No photos, no videos. Each pixel's brightness comes from a sine wave nested inside another sine wave; random parameters give every visit a different image. Adding time to the formula makes it flow, and every few seconds each wave slowly morphs into a brand-new shape.</p>
+          <p class="project__links"><a class="arrow" href="https://github.com/matousmamolat/portfolio/blob/main/js/silk.js">Source code</a></p>
         </div>
       </article>
-
-      <article class="project" id="portfolio" aria-labelledby="portfolio-title">
-        <figure data-silk="35"><img src="img/silk/silk-35.jpg" width="900" height="600" alt="Generative cover artwork for This website" loading="lazy"></figure>
-        <div>
-          <span class="num">06</span>
-          <h2 id="portfolio-title">This website</h2>
-          <ul class="meta"><li>2026</li><li>Web technologies 4IZ268</li><li>HTML · CSS</li></ul>
-          <p>Hand-written HTML and CSS — no framework, no template, no JavaScript needed. Built for the Web Technologies course and kept as my portfolio.</p>
-        </div>
-      </article>
+      <section class="section split" aria-labelledby="more">
+        <h2 class="label" id="more">More school work</h2>
+        <ul class="rows rows--static">
+          <li><div class="row"><span>Secured web server:</span> <span>Set up and hardened a Linux server running Matomo analytics. Apache with HTTP/2 and TLS 1.3, MariaDB, LDAP login, security headers, key-only SSH and fail2ban. Information security course, 2026.</span></div></li>
+          <li><div class="row"><span>Web tracking analysis:</span> <span>Measured how Novinky.cz, Alza.cz and CNN.com follow their visitors through third-party requests, cookies and localStorage, using Chrome DevTools and HAR exports. 4IZ110, 2025.</span></div></li>
+          <li><div class="row"><span>Text adventure in Java:</span> <span>Heart of Storms, a pirate adventure with an inventory, locked areas and a JUnit-tested walkthrough. 4IT101, 2026.</span></div></li>
+          <li><div class="row"><span>Flight tickets in XML:</span> <span>An XML dataset with an XSD schema, transformed with XSLT into a small website and into a PDF through XSL-FO. 2024.</span></div></li>
+        </ul>
+      </section>
     </div>
   </main>
 
@@ -114,7 +147,7 @@
           <h2>Social</h2>
           <ul class="social">
             <li><a href="https://github.com/matousmamolat">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/TODO">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/in/matou%C5%A1-mamolat-72b021282">LinkedIn</a></li>
           </ul>
         </div>
         <div>

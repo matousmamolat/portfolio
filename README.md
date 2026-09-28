@@ -6,7 +6,7 @@ Ručně psané HTML + CSS, bez frameworku a bez šablony. Všechny obrázky kres
 ```
 index.html      Úvod (claim, výběr prací, jak pracuji)
 about.html      O mně (zkušenosti, vzdělání, toolkit)
-projects.html   Projekty (5 projektů)
+projects.html   Projekty (6 projektů)
 interests.html  Zájmy (4 karty + „Currently“)
 contact.html    Kontakt
 css/style.css   Veškeré styly vč. responzivity a @media print
@@ -14,24 +14,20 @@ fonts/          Inter Tight (self-hosted, latin + latin-ext kvůli „š“)
 js/silk.js      Živé generativní vlny: každý <figure data-silk="seed"> dostane animaci
 img/silk/       Statické náhledy (fallback bez JS) — generuj přes tools/posters.html
 img/portrait.*  Fotka bez pozadí (About)
+img/shots/      Černobílé screenshoty projektů (odhalí se při najetí myší)
 tools/          Pomocný generátor náhledů (na web ho nahrávat nemusíš)
 favicon.ico / favicon.svg / apple-touch-icon.png
 ```
 
 ## Co musíš doplnit (TODO)
-- [ ] `[TODO: company]` — název firmy (index.html, about.html)
-- [ ] `[TODO: level]` — úroveň angličtiny (about.html)
-- [ ] LinkedIn URL — nahradit `https://www.linkedin.com/in/TODO` ve všech 5 stránkách (najdi a nahraď)
 - [ ] Změnit seedy podle chuti (atribut `data-silk`) a přegenerovat náhledy přes `tools/posters.html`
-  - `portrait.jpg` tvoje fotka (4:5), `hero-1/2/3.jpg` 3:2, `project-*.jpg` 3:2, `interest-*.jpg` 1:1
-  - optimalizovat velikost: šířka max ~1200 px, JPG kvalita ~75–80 (např. squoosh.app)
 - [ ] Projít texty a přepsat, co nesedí — obsah webu je tvůj
 
 ## Kontrola před odevzdáním (požadavky předmětu)
 - [x] 5 stránek s navigací, zvýrazněná aktivní položka (`aria-current="page"`)
 - [x] Validní HTML5 + CSS (ověřeno W3C Nu validátorem) — **po každé úpravě ověř znovu všechny stránky** na validator.w3.org
 - [x] Sémantické značky (header, nav, main, section, article, figure, footer, address, dl)
-- [x] CSS odděleno od obsahu, žádný JS → funguje bez JS
+- [x] CSS a JS odděleny od obsahu; bez JS web funguje (statické náhledy)
 - [x] Vícesloupcový layout bez tabulek (CSS Grid), na starších prohlížečích se sloupce jen seřadí pod sebe
 - [x] Verze pro tisk (skrytá navigace a dekorace, u odkazů se vypíše URL)
 - [x] Identifikace webu na všech stránkách, i bez obrázků a při tisku (textové logo)
