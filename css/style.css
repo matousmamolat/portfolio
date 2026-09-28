@@ -484,6 +484,13 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .contact h1 strong { font-weight: 500; background: var(--ink); color: var(--paper); padding: 0 0.1em; }
 .contact .facts { font-style: normal; }
 .contact figure { margin: 0; }
+.contact__photo { align-self: center; }
+.scene { aspect-ratio: 3 / 4; overflow: hidden; } /* live waves show through the transparent sky */
+.scene__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
 .contact figure img { width: 100%; height: 100%; object-fit: cover; }
 
 /* 11. Footer ------------------------------------------------------------- */
