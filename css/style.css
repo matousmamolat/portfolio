@@ -374,7 +374,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   padding: clamp(32px, 5vw, 64px) 0;
   border-top: 1px solid var(--rule);
 }
-.project figure { margin: 0; position: relative; align-self: start; /* keep the 3:2 frame, don't stretch to the text height */ }
+.project figure { margin: 0; position: relative; align-self: center; /* keep the 3:2 frame and centre it next to the text */ }
 .project figure::before { /* corner bracket like Inertia */
   content: "";
   position: absolute;
