@@ -402,6 +402,51 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .meta li::after { content: " ]"; }
 .project p { max-width: 36em; }
 
+/* Project screenshot revealed on hover / tap / keyboard focus */
+.reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* above the live canvas, below the grain */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.has-shot { cursor: pointer; }
+.has-shot:hover .reveal,
+.has-shot:focus .reveal { opacity: 1; }
+.has-shot:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.shot-hint {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 4;
+  padding: 2px 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+.shot-hint::before { content: "Hover to see the real thing"; }
+@media (hover: none) {
+  .shot-hint::before { content: "Tap to see the real thing"; }
+}
+.has-shot:hover .shot-hint,
+.has-shot:focus .shot-hint { opacity: 0; }
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 1.5rem;
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* 9. Interests ----------------------------------------------------------- */
 .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 16px; margin: 0; padding: 0; list-style: none; }
 .card .num { display: block; font-size: var(--step--1); margin-bottom: 8px; }
@@ -410,6 +455,11 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .card p { font-size: var(--step--1); letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.45; }
 
 .rows--static .row { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.rows--static .row span + span { /* longer descriptions read better in normal case */
+  font-size: 0.9375rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
 
 /* 10. Contact ------------------------------------------------------------ */
 .contact {
@@ -511,7 +561,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .to-top, .footer-cta, .card figure, .project figure::before { display: none !important; }
 
   .site-header { padding: 0 0 8mm; border-bottom: 1px solid #000; margin-bottom: 8mm; }
-  .brand::after { content: " — portfolio"; font-weight: 400; }
+  .brand::after { content: " | portfolio"; font-weight: 400; }
 
   .section, .page-head, .hero { padding-top: 6mm; padding-bottom: 0; min-height: 0; }
   .section--ink { background: none; color: #000; padding: 0; }
@@ -526,6 +576,8 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
   .project { page-break-inside: avoid; padding: 6mm 0; }
   .project figure { width: 45%; margin-bottom: 4mm; }
+  .silk__canvas, .shot-hint { display: none !important; }
+  .reveal { opacity: 1; }
   .manifesto figure { width: 35%; margin-top: 4mm; }
   .card, .facts div, .rows li { page-break-inside: avoid; }
   .cards, .approach, .toolkit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
