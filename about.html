@@ -42,8 +42,14 @@
             <span class="indent">beginner.</span>
           </h1>
         </div>
-        <figure>
-          <img src="img/portrait.jpg" width="800" height="1000" alt="Portrait of Matouš Mamolat">
+        <figure class="portrait">
+          <div class="portrait__frame" data-silk="23">
+            <img class="portrait__bg" src="img/silk/silk-23.jpg" width="800" height="1000" alt="">
+            <picture>
+              <source srcset="img/portrait.webp" type="image/webp">
+              <img class="portrait__person" src="img/portrait.png" width="720" height="958" alt="Portrait of Matouš Mamolat in glasses and a white striped T-shirt">
+            </picture>
+          </div>
           <figcaption>Matouš Mamolat, Prague</figcaption>
         </figure>
       </div>
@@ -146,5 +152,6 @@
       </div>
     </div>
   </footer>
+  <script src="js/silk.js" defer></script>
 </body>
 </html>

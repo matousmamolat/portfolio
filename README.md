@@ -1,6 +1,6 @@
 # Portfolio — Matouš Mamolat (4IZ268, statické stránky)
 
-Ručně psané HTML + CSS, bez frameworku, bez šablony, bez JavaScriptu.
+Ručně psané HTML + CSS, bez frameworku a bez šablony. Všechny obrázky kreslí živě `js/silk.js`; bez JavaScriptu se zobrazí statické náhledy z `img/silk/`.
 
 ## Struktura
 ```
@@ -11,7 +11,10 @@ interests.html  Zájmy (4 karty + „Currently“)
 contact.html    Kontakt
 css/style.css   Veškeré styly vč. responzivity a @media print
 fonts/          Inter Tight (self-hosted, latin + latin-ext kvůli „š“)
-img/            ZÁSTUPNÉ obrázky — vyměnit za vlastní
+js/silk.js      Živé generativní vlny: každý <figure data-silk="seed"> dostane animaci
+img/silk/       Statické náhledy (fallback bez JS) — generuj přes tools/posters.html
+img/portrait.*  Fotka bez pozadí (About)
+tools/          Pomocný generátor náhledů (na web ho nahrávat nemusíš)
 favicon.ico / favicon.svg / apple-touch-icon.png
 ```
 
@@ -19,7 +22,7 @@ favicon.ico / favicon.svg / apple-touch-icon.png
 - [ ] `[TODO: company]` — název firmy (index.html, about.html)
 - [ ] `[TODO: level]` — úroveň angličtiny (about.html)
 - [ ] LinkedIn URL — nahradit `https://www.linkedin.com/in/TODO` ve všech 5 stránkách (najdi a nahraď)
-- [ ] Vyměnit obrázky v `img/` za vlastní — **stejné názvy souborů**, pak upravit `alt` a `width`/`height` v HTML podle skutečných rozměrů
+- [ ] Změnit seedy podle chuti (atribut `data-silk`) a přegenerovat náhledy přes `tools/posters.html`
   - `portrait.jpg` tvoje fotka (4:5), `hero-1/2/3.jpg` 3:2, `project-*.jpg` 3:2, `interest-*.jpg` 1:1
   - optimalizovat velikost: šířka max ~1200 px, JPG kvalita ~75–80 (např. squoosh.app)
 - [ ] Projít texty a přepsat, co nesedí — obsah webu je tvůj
