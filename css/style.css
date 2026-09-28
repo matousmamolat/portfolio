@@ -374,7 +374,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   padding: clamp(32px, 5vw, 64px) 0;
   border-top: 1px solid var(--rule);
 }
-.project figure { margin: 0; position: relative; }
+.project figure { margin: 0; position: relative; align-self: start; /* keep the 3:2 frame, don't stretch to the text height */ }
 .project figure::before { /* corner bracket like Inertia */
   content: "";
   position: absolute;
@@ -455,7 +455,12 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .card p { font-size: var(--step--1); letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.45; }
 
 .rows--static .row { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-.rows--static .row span + span { /* longer descriptions read better in normal case */
+.row__meta {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+.rows--static .row > span + span { /* longer descriptions read better in normal case */
   font-size: 0.9375rem;
   letter-spacing: 0;
   text-transform: none;
