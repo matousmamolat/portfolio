@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Náhledy pro silk.js</title>
+  <style>
+    body { font: 14px system-ui, sans-serif; margin: 24px; background: #f2f2f0; }
+    .grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+    figure { margin: 0; }
+    canvas { display: block; width: 240px; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Generátor statických náhledů</h1>
+  <p>Když změníš seed v HTML, vygeneruj tady nový náhled a ulož ho do <code>img/silk/</code>.
+     Náhled se zobrazí, když je JavaScript vypnutý.</p>
+  <p>
+    <label>Seedy (oddělené čárkou): <input id="seedy" value="6, 27"></label>
+    <label>Šířka: <input id="sirka" type="number" value="800" style="width:6em"></label>
+    <label>Výška: <input id="vyska" type="number" value="533" style="width:6em"></label>
+    <button id="tlacitko" type="button">Vygenerovat</button>
+  </p>
+  <div class="grid" id="vysledky"></div>
+
+  <script src="../js/silk.js"></script>
+  <script>
+    document.getElementById("tlacitko").addEventListener("click", () => {
+      const W = Number(document.getElementById("sirka").value);
+      const H = Number(document.getElementById("vyska").value);
+      const seedy = document.getElementById("seedy").value.split(",").map((s) => Number(s.trim()));
+      const vysledky = document.getElementById("vysledky");
+      vysledky.innerHTML = "";
+
+      seedy.forEach((seed) => {
+        const canvas = document.createElement("canvas");
+        canvas.width = W;
+        canvas.height = H;
+        const ctx = canvas.getContext("2d");
+        const obraz = ctx.createImageData(W, H);
+        vykresliSilk(obraz.data, W, H, parametryZeSeedu(seed), 0, 0.09); // čas 0, se zrnem
+        ctx.putImageData(obraz, 0, 0);
+
+        const nazev = "silk-" + String(seed).padStart(2, "0") + ".jpg";
+        const odkaz = document.createElement("a");
+        odkaz.href = canvas.toDataURL("image/jpeg", 0.8);
+        odkaz.download = nazev;
+        odkaz.textContent = "Stáhnout " + nazev;
+
+        const figura = document.createElement("figure");
+        figura.append(canvas, odkaz);
+        vysledky.append(figura);
+      });
+    });
+  </script>
+</body>
+</html>
