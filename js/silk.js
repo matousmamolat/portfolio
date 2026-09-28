@@ -26,7 +26,7 @@ function parametryZeSeedu(seed) {
   const P = {
     a: mezi(2, 6), b: mezi(2, 6), c: mezi(2, 6), d: mezi(2, 6),
     p0: mezi(0, 6.28), p1: mezi(0, 6.28), p2: mezi(0, 6.28),
-    kontrast: mezi(0.8, 1.6),
+    kontrast: mezi(1.2, 2.4), // vyšší = ostřejší přechody, pohyb je lépe vidět
     tabulka: new Float32Array(256),
   };
   // kontrast předpočítaný pro 256 odstínů (Math.pow je pomalý)
@@ -77,8 +77,8 @@ function vykresliSilk(data, W, H, P, t, zrno) {
 function spustSilk() {
   const figury = document.querySelectorAll("[data-silk]");
   const bezPohybu = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const RYCHLOST = 0.6;   // jak rychle vlny plynou (radiány za sekundu)
-  const PROMENA = 9;      // za kolik sekund se vlna promění v nový tvar
+  const RYCHLOST = 1.4;   // jak rychle vlny plynou (vyšší = rychlejší)
+  const PROMENA = 5;      // za kolik sekund se vlna promění v nový tvar
   const nahodnySeed = () => Math.floor(Math.random() * 1e9);
   const polozky = [];
 
