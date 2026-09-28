@@ -1,8 +1,8 @@
 /* ==========================================================================
    silk.js — živě generované vlny pro celý web
-   Každý <figure data-silk="číslo"> dostane vlastní animaci.
-   Číslo (seed) určuje, jak vlna vypadá — stejný seed = vždy stejný obrázek.
-   Bez JavaScriptu se zobrazí statický obrázek <img>, který je uvnitř figure.
+   Každý <figure data-silk="číslo"> dostane vlastní animaci, která se pořád
+   plynule proměňuje do nových, náhodných tvarů.
+   Číslo (seed) určuje jen statický náhled pro prohlížeče bez JavaScriptu.
    ========================================================================== */
 
 // ===== 1. Náhoda se seedem =====
@@ -30,6 +30,19 @@ function parametryZeSeedu(seed) {
     tabulka: new Float32Array(256),
   };
   // kontrast předpočítaný pro 256 odstínů (Math.pow je pomalý)
+  for (let i = 0; i < 256; i++) P.tabulka[i] = Math.pow(i / 255, P.kontrast);
+  return P;
+}
+
+// Plynulý přechod mezi dvěma sadami parametrů: k = 0 → A, k = 1 → B
+function smichej(A, B, k) {
+  const m = (x, y) => x + (y - x) * k;
+  const P = {
+    a: m(A.a, B.a), b: m(A.b, B.b), c: m(A.c, B.c), d: m(A.d, B.d),
+    p0: m(A.p0, B.p0), p1: m(A.p1, B.p1), p2: m(A.p2, B.p2),
+    kontrast: m(A.kontrast, B.kontrast),
+    tabulka: new Float32Array(256),
+  };
   for (let i = 0; i < 256; i++) P.tabulka[i] = Math.pow(i / 255, P.kontrast);
   return P;
 }
@@ -64,7 +77,9 @@ function vykresliSilk(data, W, H, P, t, zrno) {
 function spustSilk() {
   const figury = document.querySelectorAll("[data-silk]");
   const bezPohybu = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const DELKA_SMYCKY = 14; // sekund na jednu celou smyčku
+  const RYCHLOST = 0.6;   // jak rychle vlny plynou (radiány za sekundu)
+  const PROMENA = 9;      // za kolik sekund se vlna promění v nový tvar
+  const nahodnySeed = () => Math.floor(Math.random() * 1e9);
   const polozky = [];
 
   figury.forEach((figura) => {
@@ -78,7 +93,9 @@ function spustSilk() {
       figura,
       canvas,
       ctx: canvas.getContext("2d"),
-      P: parametryZeSeedu(Number(figura.dataset.silk)),
+      odkud: parametryZeSeedu(nahodnySeed()), // při každém načtení jiný tvar
+      kam: parametryZeSeedu(nahodnySeed()),   // tvar, do kterého se mění
+      posun: Math.random() * PROMENA,         // ať se nemění všechny naráz
       viditelna: false,
       obraz: null,
     });
@@ -97,8 +114,20 @@ function spustSilk() {
     }
   }
 
-  function nakresli(p, t) {
-    vykresliSilk(p.obraz.data, p.canvas.width, p.canvas.height, p.P, t, 0);
+  // Jeden snímek: spočítá, jak daleko je proměna, smíchá parametry a nakreslí
+  function nakresli(p, sekundy) {
+    const cas = sekundy + p.posun;
+    const cyklus = Math.floor(cas / PROMENA);
+    if (p.cyklus === undefined) p.cyklus = cyklus;
+    if (cyklus !== p.cyklus) {           // proměna dokončena → vylosuj další tvar
+      p.cyklus = cyklus;
+      p.odkud = p.kam;
+      p.kam = parametryZeSeedu(nahodnySeed());
+    }
+    let k = (cas % PROMENA) / PROMENA;   // 0 → 1 během jedné proměny
+    k = k * k * (3 - 2 * k);             // "smoothstep": pomalý rozjezd i dojezd
+    const P = smichej(p.odkud, p.kam, k);
+    vykresliSilk(p.obraz.data, p.canvas.width, p.canvas.height, P, sekundy * RYCHLOST, 0);
     p.ctx.putImageData(p.obraz, 0, 0);
   }
 
@@ -110,6 +139,9 @@ function spustSilk() {
     });
   });
 
+  const start = performance.now();
+  const ted = () => (performance.now() - start) / 1000;
+
   polozky.forEach((p) => {
     nastavVelikost(p);
     nakresli(p, 0);
@@ -117,15 +149,14 @@ function spustSilk() {
   });
 
   window.addEventListener("resize", () => {
-    polozky.forEach((p) => { nastavVelikost(p); nakresli(p, 0); });
+    polozky.forEach((p) => { nastavVelikost(p); nakresli(p, ted()); });
   });
 
   if (bezPohybu) return; // uživatel si v systému vypnul animace → jen statický snímek
 
-  const start = performance.now();
-  function snimek(ted) {
-    const t = (((ted - start) / 1000) / DELKA_SMYCKY) * Math.PI * 2;
-    polozky.forEach((p) => { if (p.viditelna) nakresli(p, t); });
+  function snimek() {
+    const sekundy = ted();
+    polozky.forEach((p) => { if (p.viditelna) nakresli(p, sekundy); });
     requestAnimationFrame(snimek);
   }
   requestAnimationFrame(snimek);
