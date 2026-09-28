@@ -78,7 +78,7 @@ function spustSilk() {
   const figury = document.querySelectorAll("[data-silk]");
   const bezPohybu = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const RYCHLOST = 0.6;   // jak rychle vlny plynou (vyšší = rychlejší)
-  const PROMENA = 5;      // za kolik sekund se vlna promění v nový tvar
+  const PROMENA = 9;      // za kolik sekund se vlna promění v nový tvar
   const nahodnySeed = () => Math.floor(Math.random() * 1e9);
   const polozky = [];
 
