@@ -77,12 +77,16 @@ function vykresliSilk(data, W, H, P, t, zrno) {
 function spustSilk() {
   const figury = document.querySelectorAll("[data-silk]");
   const bezPohybu = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const RYCHLOST = 0.6;   // jak rychle vlny plynou (vyšší = rychlejší)
-  const PROMENA = 9;      // za kolik sekund se vlna promění v nový tvar
+  const RYCHLOST = 1.4;   // jak rychle vlny plynou (vyšší = rychlejší)
+  const PROMENA = 5;      // za kolik sekund se vlna promění v nový tvar
   const nahodnySeed = () => Math.floor(Math.random() * 1e9);
   const polozky = [];
 
   figury.forEach((figura) => {
+    // Bez CSS (styly se nenačetly) nemá plátno kam se položit, tak ho nepřidáváme
+    // a necháme jen statický obrázek.
+    if (getComputedStyle(figura).position === "static") return;
+
     const canvas = document.createElement("canvas");
     canvas.className = "silk__canvas";
     canvas.setAttribute("aria-hidden", "true"); // popis nese <img alt> pod ním
