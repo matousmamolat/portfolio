@@ -640,7 +640,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   }
   .rows__go, .arrow::after { display: none; }
 
-  .site-footer { margin-top: 10mm; }
+  .site-footer { margin-top: 10mm; page-break-inside: avoid; break-inside: avoid; }
   .footer-bottom { margin-top: 6mm; }
   .footer-mark { font-size: 16pt; }
 }
