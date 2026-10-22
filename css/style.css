@@ -1,12 +1,11 @@
 /* ==========================================================================
-   Matouš Mamolat — portfolio
-   Hand-written CSS, no framework. Structure:
-   1. Fonts   2. Tokens   3. Base   4. Layout helpers   5. Header & nav
+   Structure:
+   1. Fonts   2. Tokens   3. Base   4. Layout helpers   5. Header and nav
    6. Home    7. About    8. Projects   9. Interests   10. Contact
    11. Footer  12. Responsive  13. Print
    ========================================================================== */
 
-/* 1. Fonts (self-hosted Inter Tight, latin + latin-ext for Czech characters) */
+/* 1. Fonts */
 @font-face {
   font-family: "Inter Tight";
   font-style: normal;
@@ -103,7 +102,6 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 }
 .skip-link:focus { top: 8px; }
 
-/* Small uppercase label in parentheses: ( ABOUT ) */
 .label {
   display: block;
   margin: 0 0 1rem;
@@ -121,9 +119,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .arrow { text-decoration: none; }
 
 
-/* Arrow icon drawn with an SVG mask instead of a Unicode character.
-   Mobile Safari turns characters like ↗ into colourful emoji; a mask always
-   stays a thin line in the current text colour. */
+/* arrow icon */
 .arrow::after,
 .rows__go::after,
 .nav .nav__cta a::before,
@@ -176,7 +172,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 .rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
-/* 5. Header & nav */
+/* 5. Header and nav */
 .site-header {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -214,7 +210,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   text-decoration: none;
 }
 .nav a:hover, .nav a:focus-visible { text-decoration: underline; }
-/* active item: inverted chip */
+
 .nav a[aria-current="page"] {
   background: var(--ink);
   color: var(--paper);
@@ -223,8 +219,8 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .nav .nav__cta a { font-weight: 500; }
 
 
-/* Live generative artwork (js/silk.js) --------------------------------- */
-/* Without JS: the <img> poster is shown. With JS: a canvas is drawn on top. */
+/* Live generative artwork (js/silk.js) */
+/* Without JS <img> shown. */
 [data-silk] { position: relative; }
 .silk__canvas {
   position: absolute;
@@ -255,7 +251,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .silk--live::after { animation: none; }
 }
 
-/* About: portrait photo over the generative background */
+/* About: portrait photo */
 .portrait__frame { aspect-ratio: 7 / 10; overflow: hidden; }
 .portrait__bg { width: 100%; height: 100%; object-fit: cover; }
 .portrait__person {
@@ -267,7 +263,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   transform: translateX(-50%);
 }
 
-/* 6. Home ---------------------------------------------------------------- */
+/* 6. Home */
 .hero {
   position: relative;
   display: grid;
@@ -307,7 +303,6 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .hero__img--1 { top: 4%; right: 17%; }
 .hero__img--2 { bottom: 6%; left: 18%; }
 
-/* "( View   work )" row list */
 .worklist { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px clamp(24px, 4vw, 64px); }
 .big-label {
   font-size: var(--step-3);
@@ -335,7 +330,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .approach h3 { font-size: var(--step-1); text-transform: uppercase; letter-spacing: 0; margin-bottom: 0.6em; }
 .approach .num { display: block; font-size: var(--step--1); margin-bottom: 1.5rem; }
 
-/* 7. About --------------------------------------------------------------- */
+/* 7. About */
 .section--ink {
   background: var(--ink);
   color: var(--paper);
@@ -371,7 +366,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .toolkit h3 { font-size: var(--step--1); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1rem; }
 .toolkit ul { margin: 0; padding: 0; list-style: none; font-size: var(--step-1); line-height: 1.4; }
 
-/* 8. Projects ------------------------------------------------------------ */
+/* 8. Projects */
 .page-head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -403,8 +398,8 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   padding: clamp(32px, 5vw, 64px) 0;
   border-top: 1px solid var(--rule);
 }
-.project figure { margin: 0; position: relative; align-self: center; /* keep the 3:2 frame and centre it next to the text */ }
-.project figure::before { /* corner bracket like Inertia */
+.project figure { margin: 0; position: relative; align-self: center;}
+.project figure::before { 
   content: "";
   position: absolute;
   top: -10px;
@@ -435,7 +430,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .reveal {
   position: absolute;
   inset: 0;
-  z-index: 2; /* above the live canvas, below the grain */
+  z-index: 2;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -476,13 +471,13 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   text-transform: uppercase;
 }
 
-/* 9. Interests ----------------------------------------------------------- */
+/* 9. Interests */
 .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 16px; margin: 0; padding: 0; list-style: none; }
 .card .num { display: block; font-size: var(--step--1); margin-bottom: 8px; }
 .card figure { margin: 0 0 16px; }
 .card h2 { font-size: var(--step-1); text-transform: uppercase; letter-spacing: 0; margin-bottom: 0.5em; }
 .card p { font-size: var(--step--1); letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.45; }
-.card .card__q { /* the question that drives each interest */
+.card .card__q {
   margin-bottom: 0.6em;
   font-size: var(--step-1);
   letter-spacing: -0.01em;
@@ -496,13 +491,13 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   margin-top: 4px;
   color: var(--muted);
 }
-.rows--static .row > span + span { /* longer descriptions read better in normal case */
+.rows--static .row > span + span {
   font-size: 0.9375rem;
   letter-spacing: 0;
   text-transform: none;
 }
 
-/* 10. Contact ------------------------------------------------------------ */
+/* 10. Contact */
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -529,7 +524,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 }
 .contact figure img { width: 100%; height: 100%; object-fit: cover; }
 
-/* 11. Footer ------------------------------------------------------------- */
+/* 11. Footer */
 .site-footer { margin-top: clamp(72px, 10vw, 144px); padding-bottom: 32px; }
 .site-footer .rule { margin-bottom: 20px; }
 .footer-grid {
@@ -569,7 +564,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .to-top { text-decoration: none; }
 
 
-/* 12. Responsive --------------------------------------------------------- */
+/* 12. Responsive */
 @media (max-width: 900px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -599,7 +594,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .rows--static .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
 
-/* 13. Print -------------------------------------------------------------- */
+/* 13. Print */
 @media print {
   @page { margin: 18mm 16mm; }
 
@@ -630,7 +625,6 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .card, .facts div, .rows li { page-break-inside: avoid; }
   .cards, .approach, .toolkit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  /* show where links go */
   main a[href^="http"]::after, main a[href^="mailto:"]::after,
   .footer-grid a[href^="http"]::after, .footer-grid a[href^="mailto:"]::after {
     content: " (" attr(href) ")";
