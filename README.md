@@ -3,7 +3,7 @@
 Semestrální práce **4IZ268 Webové technologie: statické stránky** (VŠE, ZS 2026/2027).
 Osobní portfolio, které slouží i jako moje CV při hledání práce.
 
-- Web: https://matousmamolat.github.io/portfolio/
+- Web: https://eso-2025.vse.cz/~mamm07/portfolio/
 - Zdrojový kód: https://github.com/matousmamolat/portfolio
 
 Ručně psané HTML a CSS, bez frameworku, bez CMS a bez šablony. Vizuální styl je inspirovaný
@@ -26,7 +26,7 @@ css/style.css       Všechny styly: layout, responzivita, animované zrno, tisko
 js/silk.js          Živé generativní vlny pro všechny obrázky (jediný JavaScript na webu)
 fonts/              Písmo Inter Tight (uložené lokálně, latin + latin-ext kvůli češtině)
 img/silk/           Statické náhledy vln, zobrazí se, když neběží JavaScript
-img/shots/          Černobílé screenshoty projektů (odhalí se po najetí myší)
+img/shots/          Černobílé screenshoty projektů
 img/portrait.*      Fotka bez pozadí (About), WebP + PNG jako záloha
 img/contact-night.* Fotka s průhlednou oblohou (Contact), WebP + PNG
 img/grain.png       Textura filmového zrna
@@ -44,8 +44,8 @@ při každé návštěvě jiná a každých pár sekund se plynule promění v n
 - `prefers-reduced-motion`: kdo má v systému vypnuté animace, uvidí statický snímek.
 - Bez JavaScriptu nebo bez CSS zůstane vidět obyčejný `<img>` s náhledem a `alt` textem.
 
-**Screenshoty projektů.** Pod vlnou je schovaný skutečný screenshot, který se objeví po najetí myší,
-po klepnutí na mobilu nebo při fokusu z klávesnice (`:hover`, `:focus`, `tabindex="0"`). Čistě CSS, bez JS.
+**Screenshoty projektů.** U každého projektu je vidět rovnou skutečný screenshot. Generativní vlna
+zůstala jen tam, kde je sama ukázkou (úvod a projekt Generative studies).
 
 **Šipky u odkazů** jsou kreslené přes CSS masku se SVG, ne jako znak písma. Safari na iPhonu jinak
 znaky jako ↗ zobrazuje jako barevné emoji.
@@ -55,23 +55,23 @@ znaky jako ↗ zobrazuje jako barevné emoji.
 | Požadavek | Jak je splněn |
 |---|---|
 | Reálná entita, vlastní obsah i vzhled | Osobní web o mně, žádné CMS, šablona ani Bootstrap |
-| Dostupné na internetu | GitHub Pages |
+| Dostupné na internetu | https://eso-2025.vse.cz/~mamm07/portfolio/ (zdrojový kód na GitHubu) |
 | Minimálně 5 stránek se smysluplnou navigací | 5 stránek, stejná navigace všude |
 | Validní HTML5 | Všechny stránky i CSS ověřené W3C validátorem bez chyb |
 | Sémantické značky HTML5 | `header`, `nav`, `main`, `section`, `article`, `figure`, `figcaption`, `footer`, `address`, `dl` |
 | CSS a JS oddělené od obsahu | Jeden soubor `css/style.css` a jeden `js/silk.js`, žádné inline styly |
 | Funguje bez CSS a JS | Bez JS statické náhledy, bez CSS čitelný dokument v logickém pořadí |
 | Vícesloupcový layout bez tabulek | CSS Grid, na stránce Interests 4 sloupce, jinde 2–3 |
-| Verze pro tisk | `@media print`: skrytá navigace a dekorace, u odkazů vypsaná URL, místo vln se tisknou screenshoty |
+| Verze pro tisk | `@media print`: skrytá navigace a dekorace, u odkazů vypsaná URL, bez menu v hlavičce i patičce, v patičce zůstane jen jméno a kontakt |
 | Identifikace webu i při tisku a bez obrázků | Textové logo „matouš mamolat“ na každé stránce, v tisku doplněné „portfolio“ |
 | Neduplikovat URL | Odkazy na úvod vedou na `./`, ne na `index.html`, a každá stránka má `rel="canonical"` |
-| Odlišené odkazy | Podtržení v textu, šipky u odkazů ven, inverzní zvýraznění v menu |
+| Odlišené odkazy | Všechny odkazy v obsahu i patičce podtržené, šipky u odkazů, inverzní zvýraznění v menu |
 | Zvýrazněná aktivní položka menu | `aria-current="page"`, černý štítek |
-| Každá stránka: vlastní `h1` a `title` | Titulek ve tvaru „Stránka \| Matouš Mamolat“ |
+| Každá stránka: vlastní `h1` a `title` | Úvod: `title` i `h1` je název webu „Matouš Mamolat“; podstránky: „Stránka \| Matouš Mamolat“ |
 | Vhodné písmo a barvy | Inter Tight, text min. 16 px, popisky 13 px, kontrast textu 7:1 a víc |
 | Obrázky s `alt`, optimalizované | Všechny `img` mají `alt` (dekorativní `alt=""`), JPG/WebP zmenšené pro web |
 | Meta informace a favicon | `charset`, `viewport`, `description`, `author`, `theme-color`, favicon ICO/SVG/PNG |
-| Použitelné v 800×600 | Jméno, menu a hlavní nadpis jsou vždy nad přehybem |
+| Použitelné v 800×600 | Název webu, menu, motto a popis, o čem web je, jsou nad přehybem; nic se nepřekrývá od 320 px po 2560 px |
 | Běžné prohlížeče | Otestováno v Chromiu a Brave, na mobilu v Safari |
 
 ## Kontrola před odevzdáním
